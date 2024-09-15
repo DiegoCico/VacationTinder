@@ -9,7 +9,8 @@ no_trips = []
 
 def on_yes_click():
     """
-    Handles the 'Yes' button click event. Selects a random trip, shows its destination, and adds it to the 'Yes' list.
+    Handles the 'Yes' button click event. 
+    Selects a random trip, displays its destination name, and adds it to the 'Yes' list.
     """
     global random_trip_id
     trip_ids = get_all_trip_ids()
@@ -21,7 +22,8 @@ def on_yes_click():
 
 def on_next_click():
     """
-    Handles the 'Next' button click event. Displays the full information of the randomly selected trip.
+    Handles the 'Next' button click event. 
+    Displays the full details of the randomly selected trip.
     """
     destination_info = get_destination_info(random_trip_id)
     info_label.config(text=destination_info)
@@ -29,7 +31,8 @@ def on_next_click():
 
 def on_no_click():
     """
-    Handles the 'No' button click event. Selects a random trip, hides its details, and adds it to the 'No' list.
+    Handles the 'No' button click event. 
+    Selects a random trip and adds it to the 'No' list without showing detailed information.
     """
     global random_trip_id
     trip_ids = get_all_trip_ids()
@@ -39,24 +42,53 @@ def on_no_click():
 
 def on_exit():
     """
-    Handles the exit event. Saves all the trips marked 'Yes' or 'No' to a CSV file when the program exits.
+    Handles the exit event. 
+    Saves all the trips marked as 'Yes' or 'No' to a CSV file when the program exits.
     """
     save_trips_to_csv(yes_trips, no_trips)
+
+def style_button(button):
+    """
+    Applies a uniform style to buttons, including font, background color, padding, and border.
+    
+    Args:
+        button (tk.Button): The button to apply styles to.
+    """
+    button.config(
+        font=("Arial", 14, "bold"), 
+        bg="#4CAF50", 
+        fg="white", 
+        activebackground="#45a049",
+        padx=10, pady=10, 
+        relief="raised",
+        borderwidth=2
+    )
 
 atexit.register(on_exit)
 
 window = tk.Tk()
 window.title("Travel Destination Selector")
+window.geometry("600x400")
+window.configure(bg="#f0f0f0")
 
-info_label = tk.Label(window, text="Click Yes or No", font=("Arial", 14))
-info_label.pack(pady=20)
+info_label = tk.Label(
+    window, text="Click Yes or No", 
+    font=("Arial", 18), 
+    bg="#f0f0f0", 
+    fg="#333", 
+    padx=20, pady=20
+)
+info_label.pack(pady=40)
 
-yes_button = tk.Button(window, text="Yes", font=("Arial", 14), command=on_yes_click)
-yes_button.pack(side="left", padx=20)
+yes_button = tk.Button(window, text="Yes", command=on_yes_click)
+style_button(yes_button)
+yes_button.pack(side="left", padx=50, pady=20)
 
-no_button = tk.Button(window, text="No", font=("Arial", 14), command=on_no_click)
-no_button.pack(side="right", padx=20)
+no_button = tk.Button(window, text="No", command=on_no_click)
+style_button(no_button)
+no_button.pack(side="right", padx=50, pady=20)
 
-next_button = tk.Button(window, text="Next", font=("Arial", 14), command=on_next_click)
+next_button = tk.Button(window, text="Next", command=on_next_click)
+style_button(next_button)
 
 window.mainloop()
