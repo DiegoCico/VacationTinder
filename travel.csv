@@ -1,4 +1,4 @@
-Trip ID,Destination,Start date,End date,Duration (days),Accommodation type,Accommodation cost,Transportation type in the city,Transportation cost,Rating,Average Trip Cost,Photos URL
+Trip ID,Destination,Start date,End date,Duration,Accommodation type,Accommodation cost,Transportation type,Transportation cost,Rating,Average Trip Cost,Photos URL
 1,"London, UK",5/1/2023,5/8/2023,7,Hotel,1200,Uber,59,4.2,629.5,https://unsplash.com/s/photos/london-uk
 2,"Phuket, Thailand",6/15/2023,6/20/2023,5,Resort,800,Uber,87,4.6,443.5,https://unsplash.com/s/photos/phuket-thailand
 3,"Bali, Indonesia",7/1/2023,7/8/2023,7,Villa,1000,Rental,317,2.9,658.5,https://unsplash.com/s/photos/bali-indonesia
